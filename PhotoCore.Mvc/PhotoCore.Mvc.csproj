@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PhotoCore.DataAccess\PhotoCore.DataAccess.csproj" />
+    <ProjectReference Include="..\PhotoCore..MySql\PhotoCore.DataAccess.MySql.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

@@ -3,7 +3,8 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
-data_in/*.sql
+PhotoCore.Mvc/appsettings.json
+PhotoCore.Mvc/appsettings.Development.json
 
 # User-specific files
 *.rsuser

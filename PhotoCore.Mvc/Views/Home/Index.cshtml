@@ -1,6 +1,24 @@
-﻿@{
+﻿@model PhotoCore.Mvc.Models.Home.IndexModel
+
+@{
     ViewData["Title"] = "Home Page";
 }
+
+<h1>My Sql Users and Albums</h1>
+<div class="row">
+    <div class="col-auto">
+        @foreach (var user in Model.Users)
+        {
+            <h4>@user.User.UserName</h4>
+            @foreach (var album in user.Albums)
+            {
+                <div>
+                    @album.Title
+                </div>
+            }
+        }
+    </div>
+</div>
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>

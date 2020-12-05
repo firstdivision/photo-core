@@ -1,6 +1,6 @@
 using System;
 
-namespace PhotoCore.DataAccess.Mvc.Models
+namespace PhotoCore.Mvc.Models
 {
     public class ErrorViewModel
     {

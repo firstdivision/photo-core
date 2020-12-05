@@ -3,6 +3,7 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+## do not commit appsettings files with conn strings!!
 PhotoCore.Mvc/appsettings.json
 PhotoCore.Mvc/appsettings.Development.json
 

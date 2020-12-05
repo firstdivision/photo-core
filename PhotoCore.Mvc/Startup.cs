@@ -5,24 +5,43 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using PhotoCore.DataAccess.Models;
 
 namespace PhotoCore.DataAccess.Mvc
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public IConfigurationRoot Configuration { get; private set; }
+
+        public Startup(IWebHostEnvironment env)
         {
-            Configuration = configuration;
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(env.ContentRootPath)
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+                .AddEnvironmentVariables();
+
+            this.Configuration = builder.Build();
+
         }
 
-        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var sqlconnstring = Configuration.GetConnectionString("SqlConnectionString");
+
+            services.AddDbContext<PhotoCoreContext>(options =>
+                options.UseSqlServer(sqlconnstring));
+
+            var mysqlconnstring = Configuration.GetConnectionString("MySqlConnectionString");
+            services.AddDbContext<net_core_hello.sakila.firstdi_coppermineContext>(options =>
+                options.UseMySQL(mysqlconnstring));
+
             services.AddControllersWithViews();
         }
 

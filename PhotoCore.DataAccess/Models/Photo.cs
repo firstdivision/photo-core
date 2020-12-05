@@ -1,8 +1,12 @@
-public class Photo
+
+namespace PhotoCore.DataAccess.Models
 {
-    public int Id { get; set; }
-    public string Name { get; set; }
+    public class Photo
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
 
 
-    public virtual Album Album { get; set; }
+        public virtual Album Album { get; set; }
+    }
 }

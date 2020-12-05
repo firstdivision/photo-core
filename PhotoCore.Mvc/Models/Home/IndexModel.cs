@@ -1,23 +1,16 @@
 using System.Collections.Generic;
-using net_core_hello.sakila;
+using PhotoCore.DataAccess.MySql.Models;
 
 
 namespace PhotoCore.Mvc.Models.Home
 {
     public class IndexModel
     {
-        public IEnumerable<UserListItem> Users { get; set; }
-    }
-
-    public class UserListItem
-    {
-        public string UserName { get; set; }
-        public IEnumerable<AlbumItem> Albums{ get; set;}
-        //public CmineUsers User { get; set; }
-        //public IEnumerable<CmineAlbums> Albums { get; set; }
+        public IEnumerable<CmineUsers> Users { get; set; }
     }
 
     public class AlbumItem{
+        public int Aid { get; set; }
         public string Title { get; set; }
         public int Category { get; set; }
         public string FileName { get; set; }

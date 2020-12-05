@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using PhotoCore.DataAccess.Models;
+using PhotoCore.DataAccess.MySql.Models;
 
 namespace PhotoCore.DataAccess.Mvc
 {
@@ -39,7 +40,7 @@ namespace PhotoCore.DataAccess.Mvc
                 options.UseSqlServer(sqlconnstring));
 
             var mysqlconnstring = Configuration.GetConnectionString("MySqlConnectionString");
-            services.AddDbContext<net_core_hello.sakila.firstdi_coppermineContext>(options =>
+            services.AddDbContext<firstdi_coppermineContext>(options =>
                 options.UseMySQL(mysqlconnstring));
 
             services.AddControllersWithViews();

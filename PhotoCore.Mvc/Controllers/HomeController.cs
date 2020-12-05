@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PhotoCore.Mvc.Models;
 using PhotoCore.DataAccess.Models;
-using net_core_hello.sakila;
+using PhotoCore.DataAccess.MySql.Models;
 using PhotoCore.Mvc.Models.Home;
 
 namespace PhotoCore.DataAccess.Mvc.Controllers
@@ -29,18 +29,6 @@ namespace PhotoCore.DataAccess.Mvc.Controllers
         {
             var myusers = mysql.CmineUsers
                 .Where(user => user.CmineAlbums.Any() && user.CmineAlbums.Any(al => al.CminePictures.Any()))
-                .Select(a => new UserListItem {
-                    //User = a,
-                    UserName = a.UserName,
-                    //UserId = a.UserId,
-                    Albums = a.CmineAlbums.Select(album => new AlbumItem{
-                        //Album = album,
-                        Title = album.Title,
-                        Category = album.Category,
-                        FileName = album.CminePictures.First().Filename
-                    }),
-                })
-                .Take(1)
                 .ToList();
             
             var model = new PhotoCore.Mvc.Models.Home.IndexModel{

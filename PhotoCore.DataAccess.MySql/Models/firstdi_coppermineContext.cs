@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace net_core_hello.sakila
+namespace PhotoCore.DataAccess.MySql.Models
 {
     public partial class firstdi_coppermineContext : DbContext
     {

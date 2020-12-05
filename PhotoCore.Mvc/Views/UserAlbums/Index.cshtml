@@ -1,0 +1,19 @@
+@model PhotoCore.Mvc.Models.UserAlbums.IndexModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1>Albums</h1>
+<div class="row">
+    <div class="col-auto">
+        @foreach (var album in Model.Albums)
+        {
+            <h4>@album.Title</h4>
+
+            <div>
+                @Json.Serialize(album)
+            </div>
+        }
+    </div>
+</div>

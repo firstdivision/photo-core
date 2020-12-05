@@ -9,15 +9,11 @@
     <div class="col-auto">
         @foreach (var user in Model.Users)
         {
-            <h4>@user.UserName</h4>
-            @foreach (var album in user.Albums)
-            {
-                <div style="padding : 3px, border solid 1px #ccc;">
-                    <h5>@album.Title</h5>
-                    <img src="@album.ThumbnailUrl" alt="@album.Title"><br>
-                    Url: @album.ThumbnailUrl
-                </div>
-            }
+            <ul>
+                <li>
+                    <a asp-controller="UserAlbums" asp-action="Index" asp-route-id="@user.UserId">@user.UserName</a>
+                </li>
+            </ul>
         }
     </div>
 </div>

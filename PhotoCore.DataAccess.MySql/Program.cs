@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using net_core_hello.sakila;
+using PhotoCore.DataAccess.MySql.Models;
 
-namespace net_core_hello
+namespace PhotoCore.DataAccess.MySql
 {
     class Program
     {
         static void Main(string[] args)
         {
-            using (var db = new sakila.firstdi_coppermineContext())
+            using (var db = new firstdi_coppermineContext())
             {
                 var query = (from user in db.CmineUsers
                     join albums in db.CmineAlbums on user.UserId equals albums.Owner

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace net_core_hello.sakila
+namespace PhotoCore.DataAccess.MySql.Models
 {
     public partial class CmineSessions
     {

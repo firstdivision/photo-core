@@ -2,6 +2,7 @@ using PhotoCore.DataAccess.MySql.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using PhotoCore.Mvc.Models.UserPhotos;
+using Microsoft.EntityFrameworkCore;
 
 namespace PhotoCore.Mvc.Controllers
 {
@@ -18,6 +19,7 @@ namespace PhotoCore.Mvc.Controllers
         public IActionResult Index(int id)
         {
             var photos = mysql.CminePictures
+                .Include(p => p.CmineExif)
                 .Where(a => a.Aid == id)
                 .ToList();
 

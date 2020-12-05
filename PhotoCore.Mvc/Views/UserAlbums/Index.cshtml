@@ -10,13 +10,33 @@
     <div class="col-auto">
         @foreach (var album in Model.Albums)
         {
-            <h4>
-                <a asp-controller="UserPhotos" asp-action="Index" asp-route-id="@album.Aid">@album.Title</a> 
-            </h4>
+            <ul>
+                <li>
+                    <a asp-controller="UserPhotos" asp-action="Index" asp-route-id="@album.Aid">@album.Title</a> 
+                        -
+                        <a href="#" data-toggle="modal" data-target="@($"#json_modal{album.Aid}")">JSON</a>                    
+                </li>
+            </ul>
 
+<div class="modal" tabindex="-1" role="dialog" id="@($"json_modal{album.Aid}")">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">JSON Details</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
                 <pre>
 @JsonSerializer.Serialize(album, new JsonSerializerOptions{ WriteIndented = true })
                 </pre>
+      </div>
+    </div>
+  </div>
+</div>
+
+
         }
     </div>
 </div>

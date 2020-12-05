@@ -44,15 +44,9 @@ namespace PhotoCore.DataAccess.Mvc
             services.AddDbContext<firstdi_coppermineContext>(options =>
                 options.UseMySQL(mysqlconnstring));
 
-            services.AddMvc().AddNewtonsoftJson(options =>
-            {
-                options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
-            });
+            services.AddRouting(options => options.LowercaseUrls = true);
 
-            services.AddControllersWithViews().AddNewtonsoftJson(options =>
-            {
-                options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
-            });
+            services.AddControllersWithViews();
             
         }
 

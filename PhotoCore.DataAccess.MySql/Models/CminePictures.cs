@@ -1,12 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace net_core_hello.sakila
 {
     public partial class CminePictures
     {
         public int Pid { get; set; }
+
+        
+        [ForeignKey("CmineAlbums")]
         public int Aid { get; set; }
+        public virtual CmineAlbums CmineAlbums { get; set;}
+
         public string Filepath { get; set; }
         public string Filename { get; set; }
         public int Filesize { get; set; }

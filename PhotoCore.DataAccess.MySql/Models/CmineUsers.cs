@@ -23,5 +23,7 @@ namespace net_core_hello.sakila
         public string UserProfile6 { get; set; }
         public string UserLanguage { get; set; }
         public string UserEmailValid { get; set; }
+
+        public virtual ICollection<CmineAlbums> CmineAlbums{ get; set;}
     }
 }

@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json;
 using PhotoCore.DataAccess.Models;
 using PhotoCore.DataAccess.MySql.Models;
 
@@ -43,7 +44,16 @@ namespace PhotoCore.DataAccess.Mvc
             services.AddDbContext<firstdi_coppermineContext>(options =>
                 options.UseMySQL(mysqlconnstring));
 
-            services.AddControllersWithViews();
+            services.AddMvc().AddNewtonsoftJson(options =>
+            {
+                options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+            });
+
+            services.AddControllersWithViews().AddNewtonsoftJson(options =>
+            {
+                options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+            });
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

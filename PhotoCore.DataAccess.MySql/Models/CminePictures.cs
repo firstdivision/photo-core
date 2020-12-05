@@ -40,5 +40,7 @@ namespace PhotoCore.DataAccess.MySql.Models
         public string LasthitIp { get; set; }
         public int Position { get; set; }
         public string GuestToken { get; set; }
+
+        public virtual CmineExif CmineExif {get; set;}
     }
 }

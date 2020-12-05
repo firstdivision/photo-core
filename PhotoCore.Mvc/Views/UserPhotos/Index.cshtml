@@ -1,4 +1,5 @@
 @using System.Text.Json
+@using Newtonsoft.Json
 @model PhotoCore.Mvc.Models.UserPhotos.IndexModel
 
 @{
@@ -20,7 +21,7 @@
                         <img src="@($"http://photo.killfly.com/albums/{picture.Filepath}/thumb_{picture.Filename}")">
                     </a> 
                     -
-                    <a href="#" data-toggle="modal" data-target="@($"#json_modal{picture.Pid}")">JSON</a>                    
+                    <a href="#" data-toggle="modal" data-target="@($"#json_modal{picture.Pid}")">JSON</a>               
                 </li>
             </ul>
             
@@ -38,7 +39,7 @@
       </div>
       <div class="modal-body">
                 <pre>
-@JsonSerializer.Serialize(picture, new JsonSerializerOptions{ WriteIndented = true })
+@Newtonsoft.Json.JsonConvert.SerializeObject(picture, Newtonsoft.Json.Formatting.Indented,new JsonSerializerSettings(){ ReferenceLoopHandling = ReferenceLoopHandling.Ignore})
                 </pre>
       </div>
     </div>
